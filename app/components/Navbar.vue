@@ -27,17 +27,14 @@ const timeOnly = useDateFormat(now, "h:mm A", {
 
 <template>
   <nav
-    class="flex text-xs md:text-sm lg:text-base justify-between items-center bg-gray-400/20 backdrop-blur-xl border-b border-white/20 py-2 px-3 md:px-5 select-none"
-  >
+    class="flex text-xs md:text-sm lg:text-base justify-between items-center bg-gray-400/20 backdrop-blur-xl border-b border-white/20 py-2 px-3 md:px-5 select-none">
     <div class="flex items-center gap-5">
       <UIcon name="i-custom-apple-logo" class="size-4" />
       <p class="font-bold">Yurii's Portfolio</p>
 
       <ul class="hidden md:flex items-center gap-5">
         <li v-for="link in navLinks" :key="link.id">
-          <p
-            class="text-sm cursor-pointer font-semibold hover:underline transition-all"
-          >
+          <p class="text-sm cursor-pointer font-semibold hover:underline transition-all">
             {{ link.name }}
           </p>
         </li>
