@@ -30,7 +30,7 @@ const timeOnly = useDateFormat(now, "h:mm A", {
     class="flex text-xs md:text-sm lg:text-base justify-between items-center bg-white/50 backdrop-blur-3xl py-2 px-3 md:px-5 select-none"
   >
     <div class="flex items-center gap-5">
-      <u-icon name="i-custom-apple-logo" class="size-4" />
+      <UIcon name="i-custom-apple-logo" class="size-4" />
       <p class="font-bold">Yurii's Portfolio</p>
 
       <ul class="hidden md:flex items-center gap-5">
@@ -46,15 +46,20 @@ const timeOnly = useDateFormat(now, "h:mm A", {
 
     <ul class="flex items-center gap-5">
       <li v-for="icon in navIcons" :key="icon.id">
-        <u-icon :name="icon.name" class="size-4" />
+        <UIcon :name="icon.name" class="size-4" />
       </li>
       <li>
-        <p class="text-xs md:text-sm font-semibold">
-          {{ isBigScreen ? formatted : timeOnly }}
-        </p>
+        <ClientOnly>
+          <template #default>
+            <p class="text-xs md:text-sm font-semibold">
+              {{ isBigScreen ? formatted : timeOnly }}
+            </p>
+          </template>
+          <template #placeholder>
+            <div class="h-5 bg-gray-400 rounded-full max-w-36 w-full animate-pulse" />
+          </template>
+        </ClientOnly>
       </li>
     </ul>
   </nav>
 </template>
-
-<style scoped></style>
