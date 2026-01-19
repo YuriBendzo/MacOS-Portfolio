@@ -6,26 +6,29 @@ import Terminal from './apps/Terminal.vue'
 
 const { windows, openWindow } = useWindowSystem()
 
-const dockItems = [
+const dockItems = computed(() => [
   { 
     id: 'finder', 
     label: 'Finder', 
     icon: 'i-heroicons-folder', 
-    action: () => openWindow('finder', 'Finder', 'Finder', 'i-heroicons-folder') 
+    action: () => openWindow('finder', 'Finder', 'Finder', 'i-heroicons-folder'),
+    isOpen: windows.value.some(w => w.id === 'finder')
   },
   { 
     id: 'terminal', 
     label: 'Terminal', 
     icon: 'i-heroicons-command-line', 
-    action: () => openWindow('terminal', 'Terminal', 'Terminal', 'i-heroicons-command-line') 
+    action: () => openWindow('terminal', 'Terminal', 'Terminal', 'i-heroicons-command-line'),
+    isOpen: windows.value.some(w => w.id === 'terminal')
   },
   { 
     id: 'safari', 
     label: 'Safari', 
     icon: 'i-heroicons-globe-alt', 
     href: 'https://www.google.com/',
+    isOpen: false
   },
-]
+])
 
 const resolveComponent = (name: string) => {
   switch (name) {

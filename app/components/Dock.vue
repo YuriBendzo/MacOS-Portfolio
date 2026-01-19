@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
-  items: { id: string; label: string; icon: string; action?: () => void; href?: string }[]
-}>()
+  items: { id: string; label: string; icon: string; action?: () => void; href?: string; isOpen?: boolean }[]
+} >()
 
 const hoveredIndex = ref<number | null>(null)
 </script>
@@ -27,8 +27,6 @@ const hoveredIndex = ref<number | null>(null)
           <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-800/80 backdrop-blur text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-white/10">
             {{ item.label }}
           </div>
-
-          <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full opacity-50"></div>
         </a>
       <button
       v-else
@@ -47,10 +45,23 @@ const hoveredIndex = ref<number | null>(null)
           {{ item.label }}
         </div>
         
-        <!-- Active Dot (simulated) -->
-        <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full opacity-50"></div>
+        <transition name="fade">
+          <div v-if="item.isOpen" class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full opacity-50"></div>
+        </transition>
       </button>
       </template>
     </div>
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
