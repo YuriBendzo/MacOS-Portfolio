@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const props = defineProps<{
-    goAbout: () => void
+const emit = defineEmits<{
+    (e: 'go-about'): void
 }>();
 </script>
 
@@ -15,7 +15,8 @@ const props = defineProps<{
                 <span class="text-sm">Projects</span>
             </div>
 
-            <button class="flex flex-col items-center gap-2 group cursor-pointer" @click="goAbout" type="button">
+            <button class="flex flex-col items-center gap-2 group cursor-pointer" @click="emit('go-about')"
+                type="button">
                 <UIcon name="i-heroicons-user" class="w-16 h-16 text-blue-400 group-hover:opacity-80" />
                 <span class="text-sm">About Me</span>
             </button>
