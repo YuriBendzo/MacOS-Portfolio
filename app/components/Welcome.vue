@@ -21,7 +21,7 @@ const renderText = (text: string) => {
 type TextType = keyof typeof FONT_WEIGHT;
 
 function setupTextHover(container: HTMLElement | null, type: TextType) {
-  if (!container) return () => { };
+  if (!container) return () => {};
 
   const letters = container.querySelectorAll<HTMLSpanElement>("span");
   const { min, max, default: base } = FONT_WEIGHT[type];
@@ -29,7 +29,7 @@ function setupTextHover(container: HTMLElement | null, type: TextType) {
   const animateLetter = (
     letter: HTMLSpanElement,
     weight: number,
-    duration = 0.25
+    duration = 0.25,
   ) =>
     gsap.to(letter, {
       duration,
@@ -60,7 +60,7 @@ function setupTextHover(container: HTMLElement | null, type: TextType) {
   const stopMove = useEventListener(
     container,
     "pointermove",
-    handlePointerMove
+    handlePointerMove,
   );
   const stopLeave = useEventListener(container, "pointerleave", resetLetters);
   const stopUp = useEventListener(container, "pointerup", resetLetters);
@@ -86,14 +86,27 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="welcome" class="flex flex-col size-full text-white items-center justify-center">
+  <section
+    id="welcome"
+    class="flex flex-col size-full text-white items-center justify-center"
+  >
     <p ref="subtitleRef">
-      <span v-for="(char, i) in renderText(subtitle)" :key="i" :style="{ fontVariationSettings: `'wght' 300` }"
-        class="font-georama text-2xl md:text-3xl">{{ char === " " ? "\u00A0" : char }}</span>
+      <span
+        v-for="(char, i) in renderText(subtitle)"
+        :key="i"
+        :style="{ fontVariationSettings: `'wght' 300` }"
+        class="font-georama text-2xl md:text-3xl"
+        >{{ char === " " ? "\u00A0" : char }}</span
+      >
     </p>
     <h1 ref="titleRef" class="mt-7">
-      <span v-for="(char, i) in renderText(title)" :key="i" :style="{ fontVariationSettings: `'wght' 400` }"
-        class="font-georama text-6xl md:text-9xl italic">{{ char === " " ? "\u00A0" : char }}</span>
+      <span
+        v-for="(char, i) in renderText(title)"
+        :key="i"
+        :style="{ fontVariationSettings: `'wght' 400` }"
+        class="font-georama text-6xl md:text-9xl italic"
+        >{{ char === " " ? "\u00A0" : char }}</span
+      >
     </h1>
   </section>
 </template>
