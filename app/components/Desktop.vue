@@ -50,6 +50,14 @@ const resolveComponent = (name: string) => {
       return null;
   }
 };
+
+const dockRef = ref<{ getItemRect: (id: string) => DOMRect | null } | null>(
+  null,
+);
+
+provide("getDockItemRect", (id: string) => {
+  return dockRef.value?.getItemRect(id) ?? null;
+});
 </script>
 
 <template>
@@ -59,18 +67,36 @@ const resolveComponent = (name: string) => {
     <Navbar />
 
     <div class="relative w-full h-[calc(100%-2.5rem)]">
-      <Window
-        v-for="win in windows"
-        :key:="win.id"
-        :id="win.id"
-        :title="win.title"
-      >
-        <component :is="resolveComponent(win.component)" />
-      </Window>
+      <TransitionGroup name="window-open">
+        <Window
+          v-for="win in windows"
+          :key="win.id"
+          :id="win.id"
+          :title="win.title"
+        >
+          <component :is="resolveComponent(win.component)" />
+        </Window>
+      </TransitionGroup>
 
       <Welcome />
     </div>
 
-    <Dock :items="dockItems" />
+    <Dock ref="dockRef" :items="dockItems" />
   </div>
 </template>
+
+<style scoped>
+.window-open-enter-active,
+.window-open-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  transform-origin: bottom;
+}
+
+.window-open-enter-from,
+.window-open-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+</style>

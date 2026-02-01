@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ComponentPublicInstance } from "vue";
+
 const props = defineProps<{
   items: {
     id: string;
@@ -11,6 +13,25 @@ const props = defineProps<{
 }>();
 
 const hoveredIndex = ref<number | null>(null);
+
+const itemEls = new Map<string, HTMLElement>();
+
+const setItemEl =
+  (id: string) => (el: Element | ComponentPublicInstance | null) => {
+    if (!el) return;
+    const element =
+      (el as any).$el instanceof HTMLElement
+        ? ((el as any).$el as HTMLElement)
+        : (el as HTMLElement);
+    itemEls.set(id, element);
+  };
+
+const getItemRect = (id: string) => {
+  const el = itemEls.get(id);
+  return el?.getBoundingClientRect() ?? null;
+};
+
+defineExpose({ getItemRect });
 </script>
 
 <template>
@@ -43,6 +64,7 @@ const hoveredIndex = ref<number | null>(null);
         </a>
         <button
           v-else
+          :ref="setItemEl(item.id)"
           @click="item.action"
           @mouseenter="hoveredIndex = index"
           @mouseleave="hoveredIndex = null"
