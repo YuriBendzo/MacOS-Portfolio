@@ -3,7 +3,7 @@
     <div class="max-w-2xl mx-auto">
       <div class="flex items-center gap-6 mb-8">
         <div
-          class="w-24 h-24 shrink-0 rounded-full bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center text-3xl font-bold shadow-lg"
+          class="size-24 shrink-0 rounded-full bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center text-3xl font-bold shadow-lg"
         >
           YB
         </div>
@@ -60,10 +60,7 @@
           </h2>
           <ul class="space-y-2 text-gray-300">
             <li class="flex items-center gap-3">
-              <UIcon
-                name="i-heroicons-envelope"
-                class="w-5 h-5 text-gray-400"
-              />
+              <UIcon name="i-heroicons-envelope" class="size-5 text-gray-400" />
               <a
                 href="mailto:hello@example.com"
                 class="hover:text-blue-400 transition-colors"
@@ -73,7 +70,7 @@
             <li class="flex items-center gap-3">
               <UIcon
                 name="i-heroicons-globe-alt"
-                class="w-5 h-5 text-gray-400"
+                class="size-5 text-gray-400"
               />
               <a
                 href="https://github.com/YuriBendzo"

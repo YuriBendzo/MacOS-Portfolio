@@ -54,7 +54,7 @@ const resolveComponent = (name: string) => {
 
 <template>
   <div
-    class="w-full h-full relative overflow-hidden font-sans text-white select-none"
+    class="size-full relative overflow-hidden font-sans text-white select-none"
   >
     <Navbar />
 

@@ -16,7 +16,7 @@ const hoveredIndex = ref<number | null>(null);
 <template>
   <div class="fixed bottom-2 left-1/2 -translate-x-1/2 z-50">
     <div
-      class="bg-gray-400/20 backdrop-blur-xl border border-white/20 rounded-2xl px-2 py-2 flex items-end gap-2 shadow-2xl"
+      class="bg-gray-400/20 backdrop-blur-xl border border-white/20 rounded-2xl p-2 flex items-end gap-2 shadow-2xl"
     >
       <template v-for="(item, index) in items" :key="item.id">
         <a
@@ -30,9 +30,9 @@ const hoveredIndex = ref<number | null>(null);
           :class="{ 'scale-110 mx-2': hoveredIndex === index }"
         >
           <div
-            class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center shadow-lg border border-white/10 overflow-hidden"
+            class="size-12 bg-gray-800 rounded-xl flex items-center justify-center shadow-lg border border-white/10 overflow-hidden"
           >
-            <UIcon :name="item.icon" class="w-8 h-8 text-white" />
+            <UIcon :name="item.icon" class="size-8 text-white" />
           </div>
 
           <div
@@ -50,9 +50,9 @@ const hoveredIndex = ref<number | null>(null);
           :class="{ 'scale-110 mx-2': hoveredIndex === index }"
         >
           <div
-            class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center shadow-lg border border-white/10 overflow-hidden"
+            class="size-12 bg-gray-800 rounded-xl flex items-center justify-center shadow-lg border border-white/10 overflow-hidden"
           >
-            <UIcon :name="item.icon" class="w-8 h-8 text-white" />
+            <UIcon :name="item.icon" class="size-8 text-white" />
           </div>
 
           <!-- Tooltip -->
@@ -65,7 +65,7 @@ const hoveredIndex = ref<number | null>(null);
           <transition name="fade">
             <div
               v-if="item.isOpen"
-              class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full opacity-50"
+              class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 size-1 bg-white rounded-full opacity-50"
             ></div>
           </transition>
         </button>

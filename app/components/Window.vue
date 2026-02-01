@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDraggable } from "@vueuse/core";
+import { useDraggable, useWindowSize } from "@vueuse/core";
 import { useWindowSystem } from "~/composables/useWindowSystem";
 
 const props = defineProps<{
@@ -19,6 +19,31 @@ const {
 const windowState = computed(() =>
   windows.value.find((w) => w.id === props.id),
 );
+
+const { width } = useWindowSize();
+const isMobile = computed(() => width.value < 1024);
+
+// Enforce maximized state on mobile
+watch(
+  () => isMobile.value,
+  (mobile) => {
+    if (mobile && windowState.value && !windowState.value.isMaximized) {
+      maximizeWindow(props.id);
+    }
+  },
+  { immediate: true },
+);
+
+// Prevent un-maximizing on mobile
+watch(
+  () => windowState.value?.isMaximized,
+  (maximized) => {
+    if (isMobile.value && !maximized) {
+      maximizeWindow(props.id);
+    }
+  },
+);
+
 const windowRef = ref<HTMLElement | null>(null);
 const handleRef = ref<HTMLElement | null>(null);
 
@@ -68,10 +93,9 @@ watch(
           ? 'calc(100% - 2.5rem)'
           : `${windowState.size.height}px`,
         zIndex: windowState.zIndex,
-        // Override draggable position if maximized
         left: windowState.isMaximized ? '0px' : `${x}px`,
         top: windowState.isMaximized ? '2.5rem' : `${y}px`,
-        transform: 'none', // useDraggable uses transform by default, but we might want top/left for better control with maximize
+        transform: 'none',
       },
     ]"
     @mousedown="focusWindow(props.id)"
@@ -80,34 +104,37 @@ watch(
     <div
       ref="handleRef"
       class="h-8 bg-gray-700/50 flex items-center px-3 gap-2 select-none cursor-default"
-      @dblclick="maximizeWindow(props.id)"
+      @dblclick="!isMobile && maximizeWindow(props.id)"
     >
       <div class="flex gap-2 group">
         <button
           @click.stop="closeWindow(props.id)"
-          class="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center"
+          class="size-3 cursor-pointer rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center"
         >
           <UIcon
             name="i-heroicons-x-mark"
-            class="w-2 h-2 text-black opacity-0 group-hover:opacity-100"
+            :class="{ 'opacity-100': isMobile }"
+            class="size-2 text-black opacity-0 group-hover:opacity-100"
           />
         </button>
         <button
+          v-if="!isMobile"
           @click.stop="minimizeWindow(props.id)"
-          class="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center"
+          class="size-3 cursor-pointer rounded-full bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center"
         >
           <UIcon
             name="i-heroicons-minus"
-            class="w-2 h-2 text-black opacity-0 group-hover:opacity-100"
+            class="size-2 text-black opacity-0 group-hover:opacity-100"
           />
         </button>
         <button
+          v-if="!isMobile"
           @click.stop="maximizeWindow(props.id)"
-          class="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center"
+          class="size-3 cursor-pointer rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center"
         >
           <UIcon
             name="i-heroicons-arrows-pointing-out"
-            class="w-2 h-2 text-black opacity-0 group-hover:opacity-100"
+            class="size-2 text-black opacity-0 group-hover:opacity-100"
           />
         </button>
       </div>

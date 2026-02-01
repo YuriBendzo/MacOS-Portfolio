@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import { useWindowSize } from "@vueuse/core";
+
 import AboutMe from "../AboutMe.vue";
 import FinderHome from "./Home.vue";
 
 type View = "home" | "about";
 
 const currentView = ref<View>("home");
+
+const { width } = useWindowSize();
+const isMobile = computed(() => width.value < 1024);
 
 const goHome = () => (currentView.value = "home");
 const goAbout = () => (currentView.value = "about");
@@ -13,9 +18,12 @@ const goAbout = () => (currentView.value = "about");
 <template>
   <div class="h-full flex">
     <div
-      class="w-48 bg-gray-800/50 border-r border-white/10 p-2 flex flex-col gap-1"
+      :class="[isMobile ? 'w-16 items-center' : 'w-48']"
+      class="bg-gray-800/50 border-r h-full border-white/10 p-2 flex flex-col gap-1"
     >
-      <div class="text-xs text-gray-400 font-bold px-2 py-1">Favorites</div>
+      <div class="text-xs text-gray-400 font-bold md:text-sm px-2 py-1">
+        {{ isMobile ? "Favs" : "Favorites" }}
+      </div>
       <button
         type="button"
         class="flex items-center gap-2 px-2 py-1 rounded text-left"
@@ -26,19 +34,22 @@ const goAbout = () => (currentView.value = "about");
         ]"
         @click="goHome"
       >
-        <UIcon name="i-heroicons-home" class="w-4 h-4 text-blue-400" />
-        <span class="text-sm">Home</span>
+        <UIcon name="i-heroicons-home" class="size-4 md:size-6 text-blue-400" />
+        <span class="text-sm" :class="{ hidden: isMobile }">Home</span>
       </button>
       <div class="flex items-center gap-2 px-2 py-1 rounded opacity-50">
-        <UIcon name="i-heroicons-document-text" class="w-4 h-4 text-blue-400" />
-        <span class="text-sm">Documents</span>
+        <UIcon
+          name="i-heroicons-document-text"
+          class="size-4 md:size-6 text-blue-400"
+        />
+        <span class="text-sm" :class="{ hidden: isMobile }">Documents</span>
       </div>
       <div class="flex items-center gap-2 px-2 py-1 rounded opacity-50">
         <UIcon
           name="i-heroicons-arrow-down-tray"
-          class="w-4 h-4 text-blue-400"
+          class="size-4 md:size-6 text-blue-400"
         />
-        <span class="text-sm">Downloads</span>
+        <span class="text-sm" :class="{ hidden: isMobile }">Downloads</span>
       </div>
     </div>
     <div class="flex-1">
