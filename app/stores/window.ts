@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export interface WindowState {
   id: string;
@@ -12,12 +12,12 @@ export interface WindowState {
   position: { x: number; y: number };
   size: { width: number; height: number };
   props?: Record<string, any>;
-}
+};
 
 export const useWindowStore = defineStore('window', () => {
-  const windows = ref<WindowState[]>([])
-  const activeWindowId = ref<string | null>(null)
-  const nextZIndex = ref(10)
+  const windows = ref<WindowState[]>([]);
+  const activeWindowId = ref<string | null>(null);
+  const nextZIndex = ref(10);
 
   const openWindow = (
     id: string,
@@ -122,4 +122,4 @@ export const useWindowStore = defineStore('window', () => {
     updateWindowPosition,
     updateWindowSize,
   }
-})
+});

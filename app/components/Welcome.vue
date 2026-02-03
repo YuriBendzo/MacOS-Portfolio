@@ -29,7 +29,7 @@ function setupTextHover(container: HTMLElement | null, type: TextType) {
   const animateLetter = (
     letter: HTMLSpanElement,
     weight: number,
-    duration = 0.25
+    duration = 0.25,
   ) =>
     gsap.to(letter, {
       duration,
@@ -60,7 +60,7 @@ function setupTextHover(container: HTMLElement | null, type: TextType) {
   const stopMove = useEventListener(
     container,
     "pointermove",
-    handlePointerMove
+    handlePointerMove,
   );
   const stopLeave = useEventListener(container, "pointerleave", resetLetters);
   const stopUp = useEventListener(container, "pointerup", resetLetters);

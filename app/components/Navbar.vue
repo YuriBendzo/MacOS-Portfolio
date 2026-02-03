@@ -56,7 +56,9 @@ const timeOnly = useDateFormat(now, "h:mm A", {
             </p>
           </template>
           <template #placeholder>
-            <div class="h-5 bg-gray-400 rounded-full max-w-36 w-full animate-pulse" />
+            <div
+              class="h-5 bg-gray-400 rounded-full max-w-36 w-full animate-pulse"
+            />
           </template>
         </ClientOnly>
       </li>
