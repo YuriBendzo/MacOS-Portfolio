@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#1e1e1e] text-white p-4 md:p-8 overflow-y-auto">
+  <div class="bg-[#1e1e1e] text-white h-full p-4 md:p-8 overflow-y-auto">
     <div class="max-w-2xl mx-auto">
       <div class="flex items-center gap-6 mb-8 flex-col md:flex-row">
         <div
@@ -12,7 +12,9 @@
           <h1 class="text-3xl text-center font-bold mb-2 md:text-start">
             Yuri Bendzo
           </h1>
-          <p class="text-gray-400 text-lg text-center md:text-start">
+          <p
+            class="text-gray-400 text-lg text-balance text-center md:text-start"
+          >
             Frontend Developer
             <span class="block md:inline"
               ><span class="hidden md:inline">•</span> Vue / Nuxt /

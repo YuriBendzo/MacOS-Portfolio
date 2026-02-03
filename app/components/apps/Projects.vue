@@ -42,7 +42,7 @@ const projects = [
         <div>
           <h1 class="text-2xl font-bold">Projects</h1>
           <p class="text-gray-400 text-sm text-balance">
-            A collection of my recent work and side projects.
+            A collection of my side projects.
           </p>
         </div>
       </div>
