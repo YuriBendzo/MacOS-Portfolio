@@ -40,9 +40,9 @@ defineExpose({ getItemRect });
       class="bg-gray-400/20 backdrop-blur-xl border border-white/20 rounded-2xl p-2 flex items-end gap-2 shadow-2xl"
     >
       <template v-for="(item, index) in items" :key="item.id">
-        <a
+        <NuxtLink
           v-if="item.href"
-          :href="item.href"
+          :to="item.href"
           target="_blank"
           rel="noopener noreferrer"
           @mouseenter="hoveredIndex = index"
@@ -61,7 +61,7 @@ defineExpose({ getItemRect });
           >
             {{ item.label }}
           </div>
-        </a>
+        </NuxtLink>
         <button
           v-else
           :ref="setItemEl(item.id)"

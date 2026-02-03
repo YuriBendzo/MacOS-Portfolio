@@ -18,8 +18,8 @@ const goAbout = () => (currentView.value = "about");
 <template>
   <div class="h-full flex">
     <div
-      :class="[isMobile ? 'w-16 items-center' : 'w-48']"
-      class="bg-gray-800/50 border-r h-full border-white/10 p-2 flex flex-col gap-1"
+      :class="[isMobile ? 'w-16 items-center' : 'w-36']"
+      class="h-full self-stretch bg-gray-800/50 border-r border-white/10 p-2 flex flex-col gap-1"
     >
       <div class="text-xs text-gray-400 font-bold md:text-sm px-2 py-1">
         {{ isMobile ? "Favs" : "Favorites" }}
@@ -52,10 +52,12 @@ const goAbout = () => (currentView.value = "about");
         <span class="text-sm" :class="{ hidden: isMobile }">Downloads</span>
       </div>
     </div>
-    <div class="flex-1">
+    <div class="flex-1 min-h-0 overflow-hidden">
       <transition name="fade" mode="out-in">
-        <FinderHome v-if="currentView === 'home'" @go-about="goAbout" />
-        <AboutMe v-else />
+        <div class="h-full min-h-0 overflow-y-auto">
+          <FinderHome v-if="currentView === 'home'" @go-about="goAbout" />
+          <AboutMe v-else />
+        </div>
       </transition>
     </div>
   </div>
