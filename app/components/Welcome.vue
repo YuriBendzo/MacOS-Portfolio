@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
-import { useEventListener } from "@vueuse/core";
+import { useEventListener, useThrottleFn } from "@vueuse/core";
 
 const titleRef = ref<HTMLElement | null>(null);
 const subtitleRef = ref<HTMLElement | null>(null);
@@ -37,7 +37,7 @@ function setupTextHover(container: HTMLElement | null, type: TextType) {
       fontVariationSettings: `'wght' ${weight}`,
     });
 
-  const handlePointerMove = (e: PointerEvent) => {
+  const handlePointerMove = useThrottleFn((e: PointerEvent) => {
     const { left } = container.getBoundingClientRect();
     const pointerX = e.clientX - left;
 
@@ -51,7 +51,7 @@ function setupTextHover(container: HTMLElement | null, type: TextType) {
 
       animateLetter(letter, weight);
     });
-  };
+  }, 16);
 
   const resetLetters = () => {
     letters.forEach((letter) => animateLetter(letter, base, 0.3));

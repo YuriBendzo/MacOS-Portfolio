@@ -12,6 +12,27 @@ export default defineNuxtConfig({
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
       title: "MacOS Portfolio",
+      link: [
+        {
+          rel: 'preload',
+          as: 'image',
+          href: '/images/bg-lg.webp',
+          media: '(min-width: 1024px)'
+        },
+        {
+          rel: 'preload',
+          as: 'image',
+          href: '/images/bg-sm.webp',
+          media: '(max-width: 1023px)'
+        },
+        {
+          rel: 'preload',
+          as: 'font',
+          type: 'font/woff2',
+          href: 'https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&display=swap',
+          crossorigin: 'anonymous'
+        }
+      ]
     },
   },
   icon: {
@@ -21,5 +42,9 @@ export default defineNuxtConfig({
         dir: "./app/assets/icons",
       },
     ],
+  },
+  ssr: true,
+  nitro: {
+    preset: "static",
   },
 });

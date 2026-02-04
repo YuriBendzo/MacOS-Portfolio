@@ -10,7 +10,7 @@ const emit = defineEmits<{
   (e: "go-documents"): void;
 }>();
 
-const showVideo = ref(false);
+const showVideo = ref<boolean>(false);
 
 const openPermissionModal = () => {
   showVideo.value = false;
