@@ -32,6 +32,9 @@ export const useWindowStore = defineStore('window', () => {
       if (existingWindow.isMinimized) {
         existingWindow.isMinimized = false;
       }
+      if (props && Object.keys(props).length > 0) {
+        existingWindow.props = { ...existingWindow.props, ...props };
+      }
       focusWindow(id);
       return;
     }

@@ -74,7 +74,7 @@ provide("getDockItemRect", (id: string) => {
           :id="win.id"
           :title="win.title"
         >
-          <component :is="resolveComponent(win.component)" />
+          <component :is="resolveComponent(win.component)" v-bind="win.props" />
         </Window>
       </TransitionGroup>
 
