@@ -15,10 +15,23 @@ type NavItem = {
   view?: View;
 };
 
+const { initialView = "home" } = defineProps<{
+  initialView?: View;
+}>();
+
 const { width } = useWindowSize();
 const isMobile = computed(() => width.value < 1024);
 
-const currentView = ref<View>("home");
+const currentView = ref<View>(initialView);
+
+watch(
+  () => initialView,
+  (newView) => {
+    if (newView) {
+      currentView.value = newView;
+    }
+  },
+);
 
 const setView = (view: View) => {
   currentView.value = view;

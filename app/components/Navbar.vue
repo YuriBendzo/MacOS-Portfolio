@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { useNow, useDateFormat, useMediaQuery } from "@vueuse/core";
 
-const navLinks = [
-  { id: 1, name: "Portfolio" },
-  { id: 2, name: "Contacts" },
-  { id: 3, name: "Projects" },
-];
-
 const navIcons = [
   { id: 1, name: "i-custom-wi-fi" },
   { id: 2, name: "i-custom-search" },
@@ -32,16 +26,6 @@ const timeOnly = useDateFormat(now, "h:mm A", {
     <div class="flex items-center gap-5">
       <UIcon name="i-custom-apple-logo" class="size-4" />
       <p class="font-bold">Yurii's Portfolio</p>
-
-      <ul class="hidden md:flex items-center gap-5">
-        <li v-for="link in navLinks" :key="link.id">
-          <p
-            class="text-sm cursor-pointer font-semibold hover:underline transition-all"
-          >
-            {{ link.name }}
-          </p>
-        </li>
-      </ul>
     </div>
 
     <ul class="flex items-center gap-5">
