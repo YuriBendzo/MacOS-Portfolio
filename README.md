@@ -5,7 +5,7 @@ It mimics a desktop experience with windows/apps, smooth animations, and a clean
 
 ## Demo
 
-- Live: [MacOS Portfolio](https://a830f28e.macos-portfolio-dgg.pages.dev/)
+- Live: [MacOS Portfolio](https://a04d972f.macos-portfolio-dgg.pages.dev/)
 
 ## Features
 
