@@ -40,12 +40,6 @@ export default defineNuxtConfig({
     },
   },
   icon: {
-    provider: "none",
-    clientBundle: {
-      scan: true,
-      includeCustomCollections: true,
-      include: ["custom:**", "heroicons:**"],
-    },
     customCollections: [
       {
         prefix: "custom",
@@ -57,4 +51,3 @@ export default defineNuxtConfig({
     preference: 'dark'
   }
 });
-``
