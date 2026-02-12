@@ -40,6 +40,11 @@ export default defineNuxtConfig({
     },
   },
   icon: {
+    clientBundle: {
+      scan: true,
+      includeCustomCollections: true, 
+      include: ["custom:**", "heroicons:**"],
+    },
     customCollections: [
       {
         prefix: "custom",
