@@ -52,9 +52,7 @@ export default defineNuxtConfig({
     ],
   },
   colorMode: {
-    preference: 'dark',
-    fallback: 'dark',
-    storageKey: 'macos-portfolio-color-mode',
-    classSuffix: '',
+    preference: 'dark'
   }
 });
+``
