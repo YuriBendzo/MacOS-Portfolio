@@ -27,6 +27,33 @@ const projects = [
     icon: "i-heroicons-globe-alt",
     color: "bg-blue-500",
   },
+  {
+    id: 2,
+    title: "ARCO",
+    description:
+      "Premium Architecture & Interior Design Studio website. Built with a focus on minimalism, typography, and smooth animations.",
+    tags: [
+      {
+        name: "Vite",
+        color: "bg-[#7f55ca]",
+      },
+      {
+        name: "Vue",
+        color: "bg-[#41b883]",
+      },
+      {
+        name: "SCSS",
+        color: "bg-[#c04d7e]",
+      },
+      {
+        name: "GSAP",
+        color: "bg-[#89e550]",
+      },
+    ],
+    link: "https://yuribendzo.github.io/arco/",
+    icon: "i-heroicons-globe-alt",
+    color: "bg-blue-500",
+  },
 ];
 </script>
 
