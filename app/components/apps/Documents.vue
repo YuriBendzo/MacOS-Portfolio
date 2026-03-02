@@ -6,7 +6,7 @@ const documents = [
     type: "pdf",
     icon: "i-heroicons-document-text",
     color: "text-blue-400",
-    link: "https://drive.google.com/file/d/1vztBLqtZcXJtlmrJ9I8oHNfT7Pr5Bu0f/view?usp=sharing",
+    link: "https://drive.google.com/file/d/1Tp4I11YU-08T-nfeU9LO77-VgryjKfjC/view?usp=sharing",
   },
 ];
 </script>

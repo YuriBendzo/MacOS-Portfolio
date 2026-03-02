@@ -54,6 +54,33 @@ const projects = [
     icon: "i-heroicons-globe-alt",
     color: "bg-blue-500",
   },
+  {
+    id: 3,
+    title: "LogisticsCo",
+    description:
+      "Global Logistics and Freight Forwarding solutions. Reliable, fast, and transparent.",
+    tags: [
+      {
+        name: "Vite",
+        color: "bg-[#7f55ca]",
+      },
+      {
+        name: "JS",
+        color: "bg-[#f7df1e]",
+      },
+      {
+        name: "SCSS",
+        color: "bg-[#c04d7e]",
+      },
+      {
+        name: "HTML",
+        color: "bg-[#e34c26]",
+      },
+    ],
+    link: "https://yuribendzo.github.io/logistics-co/",
+    icon: "i-heroicons-globe-alt",
+    color: "bg-blue-500",
+  },
 ];
 </script>
 
