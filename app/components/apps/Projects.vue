@@ -2,6 +2,29 @@
 const projects = [
   {
     id: 1,
+    title: "Coffee Roastery",
+    description:
+      "Discover our curated selection of specialty coffee beans roasted to perfection. Explore single origins, distinct flavor profiles, and premium blends.",
+    tags: [
+      {
+        name: "Nuxt",
+        color: "bg-[#81df84]",
+      },
+      {
+        name: "Vue",
+        color: "bg-[#41b883]",
+      },
+      {
+        name: "Tailwind",
+        color: "bg-[#64c2cd]",
+      },
+    ],
+    link: "https://yuribendzo.github.io/coffee-roastery/",
+    icon: "i-heroicons-globe-alt",
+    color: "bg-blue-500",
+  },
+  {
+    id: 2,
     title: "3D-phone",
     description:
       "Copy of the Iphone 15 Pro landing page. Built with Nuxt 3, Vue 3, Tailwind CSS, and GSAP.",
@@ -28,7 +51,7 @@ const projects = [
     color: "bg-blue-500",
   },
   {
-    id: 2,
+    id: 3,
     title: "ARCO",
     description:
       "Premium Architecture & Interior Design Studio website. Built with a focus on minimalism, typography, and smooth animations.",
@@ -55,7 +78,7 @@ const projects = [
     color: "bg-blue-500",
   },
   {
-    id: 3,
+    id: 4,
     title: "LogisticsCo",
     description:
       "Global Logistics and Freight Forwarding solutions. Reliable, fast, and transparent.",
